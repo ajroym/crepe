@@ -11,18 +11,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "reference")
-public class Reference {
+@Table(name = "commission_status")
+public class CommissionStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "commission_id")
-    private Commission commission;
-
-    @Column(name = "image_uri")
-    private String imageUri;
+    @Column(name = "name")
+    private String name;
 }
