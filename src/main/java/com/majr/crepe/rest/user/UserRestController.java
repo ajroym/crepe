@@ -1,6 +1,7 @@
 package com.majr.crepe.rest.user;
 
 import com.majr.crepe.dto.user.UserDTO;
+import com.majr.crepe.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
