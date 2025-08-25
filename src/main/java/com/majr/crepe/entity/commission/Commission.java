@@ -28,6 +28,10 @@ public class Commission {
     @JoinColumn(name = "commissioner_user_id")
     private User commissionerId;
 
+    @ManyToOne
+    @JoinColumn(name = "commission_status_id")
+    private CommissionStatus commissionStatus;
+
     @Column(name = "description")
     private String description;
 
