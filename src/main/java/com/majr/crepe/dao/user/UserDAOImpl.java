@@ -17,7 +17,6 @@ public class UserDAOImpl implements UserDAO {
 
     public UserDAOImpl() { }
 
-
     @Override
     public User getUserById(Long id) {
         String query = "SELECT u FROM User u WHERE u.id = :id";
@@ -53,7 +52,8 @@ public class UserDAOImpl implements UserDAO {
 
     @Transactional
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(Long id) {
+        User user = this.getUserById(id);
         entityManager.remove(user);
     }
 }
