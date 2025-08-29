@@ -26,21 +26,21 @@ public class UploadDAOImpl implements UploadDAO {
     }
 
     @Override
-    public List<Upload> findAllUploadsByGallery(Long id) {
+    public List<Upload> findAllUploadsByGallery(Long galleryId) {
         String query = "SELECT u FROM Upload u WHERE u.gallery.id = :id";
 
         TypedQuery<Upload> uploadQuery = entityManager.createQuery(query, Upload.class);
-        uploadQuery.setParameter("id", id);
+        uploadQuery.setParameter("id", galleryId);
 
         return uploadQuery.getResultList();
     }
 
     @Override
-    public List<Upload> findAllUploadsByUser(Long id) {
+    public List<Upload> findAllUploadsByUser(Long userId) {
         String query = "SELECT u FROM Upload u WHERE u.user.id = :id";
 
         TypedQuery<Upload> uploadQuery = entityManager.createQuery(query, Upload.class);
-        uploadQuery.setParameter("id", id);
+        uploadQuery.setParameter("id", userId);
 
         return uploadQuery.getResultList();
     }

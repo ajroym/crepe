@@ -26,11 +26,11 @@ public class GalleryDAOImpl implements GalleryDAO {
     }
 
     @Override
-    public List<Gallery> findAllGalleriesByUser(Long id) {
+    public List<Gallery> findAllGalleriesByUser(Long userId) {
         String query = "SELECT g FROM Gallery g WHERE g.user.id = :id";
 
         TypedQuery<Gallery> galleryQuery = entityManager.createQuery(query, Gallery.class);
-        galleryQuery.setParameter("id", id);
+        galleryQuery.setParameter("id", userId);
 
         return galleryQuery.getResultList();
     }
@@ -54,7 +54,11 @@ public class GalleryDAOImpl implements GalleryDAO {
 
     @Transactional
     @Override
-    public void deleteGallery(Gallery gallery) {
-        entityManager.remove(gallery);
+    public void deleteGallery(Long id) {
+        Gallery gallery = findGalleryById(id);
+
+        if (gallery != null) {
+            entityManager.remove(gallery);
+        }
     }
 }
